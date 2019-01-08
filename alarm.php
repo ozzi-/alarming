@@ -15,7 +15,7 @@
 
   date_default_timezone_set('Europe/Zurich');
 
-  $monitoredEventsTimed   = array("componentIsOpen","componentUnlocked","componentNotReady","accessDenied","accessPermitted");
+  $monitoredEventsTimed   = array("componentUnlocked","componentNotReady","accessDenied","accessPermitted");
   $monitoredEventsAllways = array("sabotageAlarm","shortCircuitOfInputAlarm","interruptionOfInputAlarm");
   $monitoredEventsUrgent  = array("sabotageAlarm","shortCircuitOfInputAlarm","interruptionOfInputAlarm");
   $monitoredEvents        = array_merge($monitoredEventsTimed,$monitoredEventsAllways);
@@ -252,7 +252,7 @@ function contains($needle, $haystack){
 
 function checkMonitoringDayRule(){
   global $monitoredDays;
-  $currentDayOfWeek = idate('w', time());
+  $currentDayOfWeek = idate('N', time());
   $isMonitoredDay = in_array($currentDayOfWeek, $monitoredDays);
   return $isMonitoredDay;
 }
